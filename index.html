@@ -3,41 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valentine Edition 💘</title>
+<title>Valentine Edition 💌</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
 <style>
 
 body{
     margin:0;
-    font-family: 'Georgia', serif;
-    background:#f8c8dc;
-    color:#a0003c;
+    background:#f7c6da;
+    font-family:'Playfair Display', serif;
+    color:#9e0031;
     text-align:center;
 }
 
-/* ENCABEZADO TIPO REVISTA */
+/* ENCABEZADO */
 .header{
-    padding:20px;
-    background:#f4b6cf;
-    font-size:28px;
-    font-weight:bold;
+    background:#f3b2cc;
+    padding:15px;
+    border-bottom:2px solid #9e0031;
+}
+
+.header h1{
+    margin:0;
+    font-size:32px;
     letter-spacing:2px;
 }
 
-/* CONTENIDO */
-.container{
-    padding:20px;
-    max-width:500px;
-    margin:auto;
+.subheader{
+    font-size:12px;
+    letter-spacing:3px;
 }
 
-/* ESTILO POLAROID */
+/* CONTENEDOR */
+.container{
+    max-width:500px;
+    margin:auto;
+    padding:20px;
+}
+
+/* FOTO PRINCIPAL */
+.main-photo{
+    position:relative;
+}
+
+.main-photo img{
+    width:100%;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* FOTO POLAROID */
 .polaroid{
+    position:absolute;
+    width:40%;
+    bottom:-30px;
+    right:-10px;
+    transform:rotate(-8deg);
     background:white;
-    padding:10px;
-    margin:20px 0;
+    padding:5px;
     border-radius:15px;
-    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+    box-shadow:0 8px 20px rgba(0,0,0,0.4);
 }
 
 .polaroid img{
@@ -45,29 +71,40 @@ body{
     border-radius:10px;
 }
 
-.caption{
-    margin-top:10px;
-    font-size:14px;
+/* TITULO ROMANTICO */
+.title{
+    margin-top:60px;
+    font-family:'Dancing Script', cursive;
+    font-size:32px;
+}
+
+/* TEXTO */
+.text{
+    margin:20px 0;
+    font-size:16px;
+    line-height:1.6;
 }
 
 /* PREGUNTA */
 .question{
-    font-size:24px;
-    margin:30px 0 15px;
+    font-size:22px;
+    margin-top:20px;
 }
 
 /* BOTONES */
 .buttons{
+    margin-top:20px;
     position:relative;
     height:120px;
 }
 
 button{
-    padding:15px 30px;
+    padding:14px 28px;
     font-size:18px;
     border:none;
     border-radius:30px;
     cursor:pointer;
+    font-family:'Playfair Display', serif;
 }
 
 #yes{
@@ -76,10 +113,10 @@ button{
 }
 
 #no{
-    background:gray;
+    background:#888;
     color:white;
     position:absolute;
-    right:20%;
+    right:15%;
     top:40px;
 }
 
@@ -90,7 +127,9 @@ button{
     align-items:center;
     height:100vh;
     background:#ffb6d9;
-    font-size:28px;
+    text-align:center;
+    font-family:'Dancing Script', cursive;
+    font-size:34px;
     padding:20px;
 }
 
@@ -100,28 +139,35 @@ button{
 <body>
 
 <div class="header">
-    Valentine Edition 💌
+    <div class="subheader">EDICIÓN ESPECIAL • 14 DE FEBRERO</div>
+    <h1>Valentine Edition</h1>
 </div>
 
 <div class="container">
 
-    <div class="polaroid">
+    <div class="main-photo">
         <img src="foto1.jpg">
-        <div class="caption">Nuestra historia favorita 💕</div>
+        <div class="polaroid">
+            <img src="foto2.jpg">
+        </div>
     </div>
 
-    <div class="polaroid">
-        <img src="foto2.jpg">
-        <div class="caption">Mi foto favorita tuya 😍</div>
+    <div class="title">
+        Josselin 💖
+    </div>
+
+    <div class="text">
+        Después de que el mundo hiciera su magia y nuestros caminos se cruzaran,
+        entendí que quiero cada 14 de febrero contigo.
+        Mi corazón lo tiene claro desde hace tiempo…
     </div>
 
     <div class="question">
-        Josselin 💖<br>
-        ¿Quieres ser mi San Valentín?
+        ¿Quieres ser mi San Valentín? 💍
     </div>
 
     <div class="buttons">
-        <button id="yes">Sí 💍</button>
+        <button id="yes">Sí 💖</button>
         <button id="no">No 😢</button>
     </div>
 
@@ -132,7 +178,7 @@ button{
 const noBtn = document.getElementById("no");
 
 function moverBoton(){
-    const x = Math.random() * (window.innerWidth - 100);
+    const x = Math.random() * (window.innerWidth - 120);
     const y = Math.random() * (window.innerHeight - 100);
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
