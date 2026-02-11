@@ -3,118 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Josselin 💖</title>
+<title>Valentine Edition 💘</title>
 
 <style>
+
 body{
     margin:0;
     font-family: 'Georgia', serif;
-    background: linear-gradient(to bottom, #ffd6e7, #ffc2dd);
+    background:#f8c8dc;
+    color:#a0003c;
     text-align:center;
-    overflow:hidden;
 }
 
+/* ENCABEZADO TIPO REVISTA */
+.header{
+    padding:20px;
+    background:#f4b6cf;
+    font-size:28px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+/* CONTENIDO */
 .container{
     padding:20px;
+    max-width:500px;
+    margin:auto;
 }
 
-h1{
-    font-size:28px;
-    color:#b3003c;
+/* ESTILO POLAROID */
+.polaroid{
+    background:white;
+    padding:10px;
+    margin:20px 0;
+    border-radius:15px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
 }
 
-.question{
-    font-size:22px;
-    margin-top:20px;
-    color:#b3003c;
-}
-
-.gallery{
-    position:relative;
-    margin:20px auto;
-    width:90%;
-    max-width:350px;
-}
-
-.gallery img{
+.polaroid img{
     width:100%;
-    border-radius:20px;
-    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+    border-radius:10px;
 }
 
-.floating{
-    position:absolute;
-    width:120px;
-    border-radius:20px;
-    bottom:-40px;
-    right:-20px;
-    transform:rotate(-10deg);
-    box-shadow:0 8px 20px rgba(0,0,0,0.4);
+.caption{
+    margin-top:10px;
+    font-size:14px;
+}
+
+/* PREGUNTA */
+.question{
+    font-size:24px;
+    margin:30px 0 15px;
+}
+
+/* BOTONES */
+.buttons{
+    position:relative;
+    height:120px;
 }
 
 button{
-    padding:15px 25px;
+    padding:15px 30px;
     font-size:18px;
     border:none;
     border-radius:30px;
-    margin:10px;
     cursor:pointer;
-    transition:0.3s;
 }
 
 #yes{
-    background:#ff3366;
+    background:#ff2e63;
     color:white;
-}
-
-#yes:active{
-    transform:scale(1.1);
 }
 
 #no{
-    background:#888;
+    background:gray;
     color:white;
     position:absolute;
+    right:20%;
+    top:40px;
 }
 
-.hearts{
-    position:fixed;
-    font-size:25px;
-    animation: float 4s linear infinite;
+/* FINAL */
+.final{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#ffb6d9;
+    font-size:28px;
+    padding:20px;
 }
 
-@keyframes float{
-    0%{transform:translateY(0);}
-    100%{transform:translateY(-100vh);}
-}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-    <h1>Valentine Edition 💘</h1>
+<div class="header">
+    Valentine Edition 💌
+</div>
 
-    <div class="gallery">
+<div class="container">
+
+    <div class="polaroid">
         <img src="foto1.jpg">
-        <img src="foto2.jpg" class="floating">
+        <div class="caption">Nuestra historia favorita 💕</div>
+    </div>
+
+    <div class="polaroid">
+        <img src="foto2.jpg">
+        <div class="caption">Mi foto favorita tuya 😍</div>
     </div>
 
     <div class="question">
-        Josselin 💖<br><br>
-        ¿Quieres ser mi San Valentín? 💕
+        Josselin 💖<br>
+        ¿Quieres ser mi San Valentín?
     </div>
 
-    <button id="yes">Sí 💍</button>
-    <button id="no">No 😢</button>
+    <div class="buttons">
+        <button id="yes">Sí 💍</button>
+        <button id="no">No 😢</button>
+    </div>
+
 </div>
 
 <script>
+
 const noBtn = document.getElementById("no");
 
 function moverBoton(){
     const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
+    const y = Math.random() * (window.innerHeight - 100);
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
 }
@@ -124,29 +143,13 @@ noBtn.addEventListener("touchstart", moverBoton);
 
 document.getElementById("yes").addEventListener("click", function(){
     document.body.innerHTML = `
-        <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#ffb6d9;text-align:center;padding:20px;">
-            <h1 style="font-size:30px;color:#b3003c;">
-                Sabía que dirías que sí 💍💖<br><br>
-                Te amo Josselin ❤️
-            </h1>
+        <div class="final">
+            💖 Sabía que dirías que sí 💍 <br><br>
+            Te amo Josselin ❤️
         </div>
     `;
 });
 
-function crearCorazon(){
-    const heart = document.createElement("div");
-    heart.innerHTML = "💖";
-    heart.classList.add("hearts");
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.bottom = "0px";
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 4000);
-}
-
-setInterval(crearCorazon, 800);
 </script>
 
 </body>
